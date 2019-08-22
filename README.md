@@ -12,6 +12,10 @@ version of Julia, from source.
 It is available as a plugin for [jlenv](https://github.com/jlenv/julia-build) that
 provides the `jlenv install` command, or as a standalone program.
 
+  - [jlenv]: https://github.com/jlenv/jlenv
+  - [definitions]: https://github.com/jlenv/julia-build/tree/master/share/julia-build
+  - [wiki]: https://github.com/jlenv/julia-build/wiki
+
 ## Installation
 
 Manages gcc versions using `update-alternatives`/`alternatives`:
@@ -96,13 +100,13 @@ read from `STDIN`:
 
 ```sh
 # applying a single patch
-$ jlenv install --patch 1.9.3-p429 < /path/to/julia.patch
+$ jlenv install --patch 1.0.3-p429 < /path/to/julia.patch
 
 # applying a patch from HTTP
-$ jlenv install --patch 1.9.3-p429 < <(curl -sSL http://git.io/julia.patch)
+$ jlenv install --patch 1.0.3-p429 < <(curl -sSL http://git.io/julia.patch)
 
 # applying multiple patches
-$ cat fix1.patch fix2.patch | jlenv install --patch 1.9.3-p429
+$ cat fix1.patch fix2.patch | jlenv install --patch 1.0.3-p429
 ```
 
 #### Checksum Verification
