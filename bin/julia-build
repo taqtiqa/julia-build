@@ -770,7 +770,7 @@ gccs_in_path() {
   shopt -u nullglob
 
   if is_mac; then
-    echo "Macintosh equivalent of update-alternatives"
+    echo "Macintosh equivalent of update-alternatives?"
   else
     update_gcc 5
   fi
