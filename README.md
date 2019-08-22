@@ -1,4 +1,4 @@
-![](https://travis-ci.org/HiroakiMikami/julia-build.svg?branch=master)
+![](https://travis-ci.org/jlenv/julia-build.svg?branch=master)
 
 # julia-build
 
@@ -9,18 +9,27 @@ This project was forked from [ruby-build](https://github.com/rbenv/ruby-build), 
 julia-build is a command-line utility that makes it easy to install virtually any
 version of Julia, from source.
 
-It is available as a plugin for [jlenv](https://github.com/HiroakiMikami/julia-build) that
+It is available as a plugin for [jlenv](https://github.com/jlenv/julia-build) that
 provides the `jlenv install` command, or as a standalone program.
 
+  - [jlenv]: https://github.com/jlenv/jlenv
+  - [definitions]: https://github.com/jlenv/julia-build/tree/master/share/julia-build
+  - [wiki]: https://github.com/jlenv/julia-build/wiki
+
 ## Installation
+
+Manages gcc versions using `update-alternatives`/`alternatives`:
+
+1. Debian/Ubuntu package: `dpkg`
+1. RHEL/CentOS/Fedora package: `chkconfig`
 
 ```sh
 # As an jlenv plugin
 $ mkdir -p "$(jlenv root)"/plugins
-$ git clone https://github.com/HiroakiMikami/julia-build.git "$(jlenv root)"/plugins/julia-build
+$ git clone https://github.com/jlenv/julia-build.git "$(jlenv root)"/plugins/julia-build
 
 # As a standalone program
-$ git clone https://github.com/HiroakiMikami/julia-build.git
+$ git clone https://github.com/jlenv/julia-build.git
 $ PREFIX=/usr/local ./julia-build/install.sh
 ```
 
@@ -91,13 +100,13 @@ read from `STDIN`:
 
 ```sh
 # applying a single patch
-$ jlenv install --patch 1.9.3-p429 < /path/to/julia.patch
+$ jlenv install --patch 1.0.3-p429 < /path/to/julia.patch
 
 # applying a patch from HTTP
-$ jlenv install --patch 1.9.3-p429 < <(curl -sSL http://git.io/julia.patch)
+$ jlenv install --patch 1.0.3-p429 < <(curl -sSL http://git.io/julia.patch)
 
 # applying multiple patches
-$ cat fix1.patch fix2.patch | jlenv install --patch 1.9.3-p429
+$ cat fix1.patch fix2.patch | jlenv install --patch 1.0.3-p429
 ```
 
 #### Checksum Verification
@@ -124,6 +133,6 @@ variable when using `--keep` with `julia-build`.
 
 Please see Julia-Build wiki for solutions to common problems.
 
-  [jlenv]: https://github.com/HiroakiMikami/jlenv
-  [definitions]: https://github.com/HiroakiMikami/julia-build/tree/master/share/julia-build
-  [wiki]: https://github.com/HiroakiMikami/julia-build/wiki
+  [jlenv]: https://github.com/jlenv/jlenv
+  [definitions]: https://github.com/jlenv/julia-build/tree/master/share/julia-build
+  [wiki]: https://github.com/jlenv/julia-build/wiki
