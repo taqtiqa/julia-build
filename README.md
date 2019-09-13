@@ -52,6 +52,8 @@ $ cd "$(jlenv root)"/plugins/julia-build && git pull
 
 ## Usage
 
+### Basic Usage
+
 ```sh
 # As an jlenv plugin
 $ jlenv install --list                    # lists all available versions of Julia
