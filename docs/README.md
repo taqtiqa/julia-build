@@ -36,10 +36,13 @@ Or simply as `julia-build` when used as a standalone program.
     * [Keeping the build directory after installation](#keeping-the-build-directory-after-installation)
 * [Definitions](#definitions)
     * [Build steps](#build-steps)
+      * [Pre-build steps:](#pre-build-steps)
+      * [Build steps:](#build-steps-1)
+      * [Post-build steps:](#post-build-steps)
     * [Constraints](#constraints)
     * [Hooks](#hooks)
 
-<!-- Added by: Mark Van de Vyver, at: Tue 10 Sep 18:49:21 AEST 2019 -->
+<!-- Added by: hedge, at: Fri 13 Sep 16:25:37 AEST 2019 -->
 
 <!--te-->
 
@@ -329,10 +332,11 @@ variable when using `--keep` with `julia-build`.
 
 ## Definitions
 
-Build definitions are simple shell scripts that get sourced in the julia-build
+Build definitions are simple shell scripts that get sourced in the `julia-build`
 environment so they can invoke functions that fetch necessary packages and
-compile them into the destination directory.  The complete list of  is here 
+compile them into the destination directory.  The complete list of
 [Julia definitions](https://github.com/jlenv/julia-build/tree/master/share/julia-build)
+is here.
 
 The basic invocation from a build definition is the function to download and
 install a package from a tarball:
@@ -348,13 +352,6 @@ checksum.
 `PACKAGE_NAME` is the name of the directory to `cd` into after extracting the
 tarball. The subsequent `BUILD_STEPS` will be executed within that directory.
 
-Alternatively, a package may be retrieved via git or SVN:
-
-```sh
-install_git PACKAGE_NAME GIT_URL BRANCH [...]
-install_svn PACKAGE_NAME SVN_URL REVISION [...]
-```
-
 `BUILD_STEPS` is a list of operations to run in order to complete the installation
 of a Julia version. If empty, the list defaults to "standard".
 
@@ -365,24 +362,30 @@ condition functions available to built-in definitions are:
 * **needs_yaml**: true if there isn't an adequate libyaml found on the system
 * **has_broken_mac_openssl**: true for Apple-patched openssl v0.9.8
 
+Alternatively, a package may be retrieved via git or SVN:
+
+```sh
+install_git PACKAGE_NAME GIT_URL BRANCH [...]
+install_svn PACKAGE_NAME SVN_URL REVISION [...]
+```
 
 ### Build steps
 
-Pre-build steps:
+#### Pre-build steps:
 
 * **ldflags_dirs**: Ensures that directories listed in `LDFLAGS` exist.
 * **auto_tcltk**: Detects XQuartz on OS X or disables TK.
 * **autoconf**: Runs `autoconf`. Prerequisite for "standard" step when fetching
   Julia versions from git/SVN.
 
-Build steps:
+#### Build steps:
 
 * **standard**: `./configure` + `make`. This is the default.
 * **topaz**: copies over pre-built Topaz.
 * **julia**: `julia setup.jl`. Used when installing Julia Packages.
 * **mac_openssl**: builds OpenSSL on OS X.
 
-Post-build steps:
+#### Post-build steps:
 
 * **verify_openssl**: Checks that openssl extension can be loaded.
 
