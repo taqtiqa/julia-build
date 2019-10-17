@@ -1,6 +1,6 @@
-![](https://travis-ci.org/jlenv/julia-build.svg?branch=master)
-
 # julia-build
+
+[![Build Status](https://travis-ci.com/jlenv/julia-build.svg?branch=master)](https://travis-ci.com/jlenv/julia-build)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d33f741a507b4cee99ab9d4931ae1163)](https://www.codacy.com/manual/taqtiqa-mark/jlenv-julia-build?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jlenv/julia-build&amp;utm_campaign=Badge_Grade)[![CodeFactor](https://www.codefactor.io/repository/github/jlenv/julia-build/badge)](https://www.codefactor.io/repository/github/jlenv/julia-build)
 
 Julia-build is a command-line utility tool that makes it easy to compile,
 install and remove virtually any version of [Julia](https://www.julialang.org),
