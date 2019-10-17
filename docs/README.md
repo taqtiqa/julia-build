@@ -13,7 +13,6 @@ Or simply as `julia-build` when used as a standalone program.
 # Table of Contents
 
 <!--ts-->
-
 * [Requirements](#requirements)
 * [Installing](#installing)
 * [Upgrading](#upgrading)
@@ -42,8 +41,7 @@ Or simply as `julia-build` when used as a standalone program.
     * [Constraints](#constraints)
     * [Hooks](#hooks)
 
-<!-- Added by: hedge, at: Fri 13 Sep 16:25:37 AEST 2019 -->
-
+<!-- Added at: Fri 13 Sep 16:25:37 AEST 2019 -->
 <!--te-->
 
 ---
