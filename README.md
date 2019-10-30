@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/jlenv/julia-build.svg?branch=master)](https://travis-ci.com/jlenv/julia-build)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d33f741a507b4cee99ab9d4931ae1163)](https://www.codacy.com/manual/taqtiqa-mark/jlenv-julia-build?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jlenv/julia-build&amp;utm_campaign=Badge_Grade)[![CodeFactor](https://www.codefactor.io/repository/github/jlenv/julia-build/badge)](https://www.codefactor.io/repository/github/jlenv/julia-build)
 
-Julia-build is a command-line utility tool that makes it easy to compile,
+`julia-build` is a command-line utility tool that makes it easy to compile,
 install and remove virtually any version of [Julia](https://www.julialang.org),
 using downloaded source files.
 
@@ -17,21 +17,8 @@ Or simply as `julia-build` when used as a standalone program.
 * [Upgrading](#upgrading)
 * [Usage](#usage)
 * [Documentation](#documentation)
-
 <!-- Added by: Mark Van de Vyver, at: Tue 10 Sep 18:47:40 AEST 2019 -->
 <!--te-->
-
----
-
-julia-build is a command-line utility that makes it easy to install virtually any
-version of Julia, from source.
-
-It is available as a plugin for [jlenv](https://github.com/jlenv/julia-build) that
-provides the `jlenv install` command, or as a standalone program.
-
-  - [jlenv]: https://github.com/jlenv/jlenv
-  - [definitions]: https://github.com/jlenv/julia-build/tree/master/share/julia-build
-  - [wiki]: https://github.com/jlenv/julia-build/wiki
 
 ## Installation
 
@@ -79,5 +66,10 @@ ensures system dependencies are in place.
 
 ## Documentation
 
-Please see `julia-build` [documentation page](https://julia-build.github.io/docs/README.md)
+Please see `julia-build` [documentation page](https://jlenv.github.io/julia-build)
 for more detail and solutions to common problems.
+
+## Requested Contributor Conduct
+
+In the interest of fostering an excellent code base, we try to encourage anyone
+to participate in our project. Please do likewise.

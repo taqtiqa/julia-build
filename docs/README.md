@@ -1,45 +1,45 @@
-![](https://travis-ci.org/jlenv/julia-build.svg?branch=master)
-
 # julia-build
 
-Julia-build is a command-line utility tool that makes it easy to compile, 
-install and remove virtually any version of [Julia](https://www.julialang.org), 
+[![Build Status](https://travis-ci.com/jlenv/julia-build.svg?branch=master)](https://travis-ci.com/jlenv/julia-build)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d33f741a507b4cee99ab9d4931ae1163)](https://www.codacy.com/manual/taqtiqa-mark/jlenv-julia-build?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jlenv/julia-build&amp;utm_campaign=Badge_Grade)[![CodeFactor](https://www.codefactor.io/repository/github/jlenv/julia-build/badge)](https://www.codefactor.io/repository/github/jlenv/julia-build)
+
+Julia-build is a command-line utility tool that makes it easy to compile,
+install and remove virtually any version of [Julia](https://www.julialang.org),
 using downloaded source files.
 
 Julia-build is exposed as a plugin for [jlenv](https://github.com/jlenv/julia-build)
 that provides the `jlenv install` command.
 Or simply as `julia-build` when used as a standalone program.
 
-# Table of Contents
+## Table of Contents
 
 <!--ts-->
 * [Requirements](#requirements)
 * [Installing](#installing)
 * [Upgrading](#upgrading)
 * [Contributing](#contributing)
-    * [Running BATS test suite](#running-bats-test-suite)
+  * [Running BATS test suite](#running-bats-test-suite)
 * [Notes](#notes)
-    * [GCC compatibility](#gcc-compatibility)
-    * [Suggested build environment](#suggested-build-environment)
+  * [GCC compatibility](#gcc-compatibility)
+  * [Suggested build environment](#suggested-build-environment)
 * [Troubleshooting](#troubleshooting)
-    * ["mkdir: /Volumes/Macintosh: Not a directory"](#mkdir-volumesmacintosh-not-a-directory)
+  * ["mkdir: /Volumes/Macintosh: Not a directory"](#mkdir-volumesmacintosh-not-a-directory)
     * [No space left on device](#no-space-left-on-device)
     * [Lower the number of parallel jobs](#lower-the-number-of-parallel-jobs)
 * [Usage](#usage)
-    * [Basic Usage](#basic-usage)
-    * [Advanced Usage](#advanced-usage)
-    * [Custom Build Definitions](#custom-build-definitions)
-    * [Custom Build Configuration](#custom-build-configuration)
-    * [Applying Patches](#applying-patches)
-    * [Checksum Verification](#checksum-verification)
-    * [Keeping the build directory after installation](#keeping-the-build-directory-after-installation)
+  * [Basic Usage](#basic-usage)
+  * [Advanced Usage](#advanced-usage)
+  * [Custom Build Definitions](#custom-build-definitions)
+  * [Custom Build Configuration](#custom-build-configuration)
+  * [Applying Patches](#applying-patches)
+  * [Checksum Verification](#checksum-verification)
+  * [Keeping the build directory after installation](#keeping-the-build-directory-after-installation)
 * [Definitions](#definitions)
-    * [Build steps](#build-steps)
-      * [Pre-build steps:](#pre-build-steps)
-      * [Build steps:](#build-steps-1)
-      * [Post-build steps:](#post-build-steps)
-    * [Constraints](#constraints)
-    * [Hooks](#hooks)
+  * [Build steps](#build-steps)
+    * [Pre-build steps:](#pre-build-steps)
+    * [Build steps:](#build-steps-1)
+    * [Post-build steps:](#post-build-steps)
+  * [Constraints](#constraints)
+  * [Hooks](#hooks)
 
 <!-- Added at: Fri 13 Sep 16:25:37 AEST 2019 -->
 <!--te-->
@@ -48,22 +48,22 @@ Or simply as `julia-build` when used as a standalone program.
 
 ## Requirements
 
-The Julia build requirements should be inplace, these are elaborated below, 
-[Suggested build environment](#suggested-build-environment). 
-Please note, the [jlenv](https://github.com/jlenv/jlenv-cookbook) cookbook 
-provides the [resources](https://docs.chef.io/resource.html) to setup the 
+The Julia build requirements should be inplace, these are elaborated below,
+[Suggested build environment](#suggested-build-environment).
+Please note, the [jlenv](https://github.com/jlenv/jlenv-cookbook) cookbook
+provides the [resources](https://docs.chef.io/resource.html) to setup the
 correct build environment and write Julia installation management recipes.
 
 ## Installing
 
 ```sh
 # As an jlenv plugin
-$ mkdir -p "$(jlenv root)"/plugins
-$ git clone https://github.com/jlenv/julia-build.git "$(jlenv root)"/plugins/julia-build
+mkdir -p "$(jlenv root)"/plugins
+git clone https://github.com/jlenv/julia-build.git "$(jlenv root)"/plugins/julia-build
 
 # As a standalone program
-$ git clone https://github.com/jlenv/julia-build.git
-$ PREFIX=/usr/local ./julia-build/install.sh
+git clone https://github.com/jlenv/julia-build.git
+PREFIX=/usr/local ./julia-build/install.sh
 ```
 
 ## Upgrading
@@ -77,6 +77,7 @@ First locate it on your system:
 which julia-build
 ls "$(jlenv root)"/plugins
 ```
+
 <!---
 If it's in `/usr/local/bin` on a Mac, you've probably installed it via
 [Homebrew][https:brew.sh]:
@@ -85,27 +86,28 @@ If it's in `/usr/local/bin` on a Mac, you've probably installed it via
 brew upgrade julia-build
 ```
 --->
-
 Or, if you have it installed via git as an jlenv plugin:
 
 ```sh
 cd "$(jlenv root)"/plugins/julia-build && git pull
 ```
+
 ## Contributing
 
 Adding a Julia release is as simple as:
 
-1. Identify the Julia [tag]() string.  Example: `v1.3.0-alpha`.
-1. Copy one of the files in this rep's folder `share\julia-build`.  Give it 
-   the tag string as a name: `cp .\share\juila-build\v1.0.0 .\share\juila-build\v1.3.0-alpha`
-1. Open the newly created file and replace occurances of `v1.0.0` with `v1.3.0-alpha`
+1. Identify the Julia [tag](https://github.com/JuliaLang/julia/release) string.
+Example: `v1.1.0-rc2`.
+1. Copy one of the files in this rep's folder `share\julia-build`.  Give it
+   the tag string as a name: `cp .\share\juila-build\v1.0.0 .\share\juila-build\v1.1.0-rc2`
+1. Open the newly created file and replace occurances of `v1.0.0` with `v1.1.0-rc2`
 
 ### Running BATS test suite
 
-It is only neccessary to run the [BATS](https://github.com/sstephenson/bats) 
+It is only neccessary to run the [BATS](https://github.com/sstephenson/bats)
 test suite if functionality is added or a bug is fixed.
 
-Please add tests that exercise the functionality added, or guard against the 
+Please add tests that exercise the functionality added, or guard against the
 bug regressions.  To run tests:
 
 ```bash
@@ -116,8 +118,8 @@ script\test
 
 ### GCC compatibility
 
-Julia is currently built using `gcc-5`.  The Julia build script points this to 
-`gcc`.
+Julia is currently built using `gcc-5`.
+The Julia build script points this to `gcc`.
 
 ### Suggested build environment
 
@@ -130,13 +132,13 @@ environment.
 * **Chef (zero), etc.:**
 
   If you don't already, we suggest you manage software installation
-  prerequisites, environment and configuration using one of 
-  [Chef](https://www.chef.io/) ([Zero](https://github.com/chef/chef-zero)), 
-  [Ansible](https://www.ansible.com), [Salt](https://www.saltstack.com), 
+  prerequisites, environment and configuration using one of
+  [Chef](https://www.chef.io/) ([Zero](https://github.com/chef/chef-zero)),
+  [Ansible](https://www.ansible.com), [Salt](https://www.saltstack.com),
   [Puppet](https://puppet.com/), etc.
-  In the case of [Chef](https://www.chef.io/) ([Zero](https://github.com/chef/chef-zero)) 
-  the [jlenv](https://github.com/jlenv/jlenv-cookbook) cookbook provides the 
-  [resources](https://docs.chef.io/resource.html) to write Julia installation 
+  In the case of [Chef](https://www.chef.io/) ([Zero](https://github.com/chef/chef-zero))
+  the [jlenv](https://github.com/jlenv/jlenv-cookbook) cookbook provides the
+  [resources](https://docs.chef.io/resource.html) to write Julia installation
   management recipes.
 
 * **macOS:**
@@ -147,23 +149,26 @@ environment.
     ```sh
     brew install <package-dependencies>
     ```
-    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv) 
-    package [dependencies file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
+
+    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv-cookbook)
+    package dependencies [file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
 
 * **Ubuntu/Debian/Mint:**
 
     ```sh
     apt-get install -y <package-dependencies>
     ```
-    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv) 
-    package [dependencies file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
+
+    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv-cookbook)
+    package dependencies [file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
 
 * **CentOS/Fedora:**
 
     ```sh
     yum install -y <package-dependencies>
     ```
-    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv) 
+
+    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv-cookbook)
     package [dependencies file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
 
 * **openSUSE:**
@@ -171,8 +176,9 @@ environment.
     ```sh
     zypper install -y <package-dependencies>
     ```
-    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv) 
-    package [dependencies file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
+
+    Where the package-dependencies are defined in the [jlenv-cookbook](https://github.com/jlenv/jlenv-cookbook)
+    package dependencies [file](https://github.com/jlenv/jlenv-cookbook/blob/master/libraries/package_deps.rb#L38)
 
 * **Arch Linux:**
 
@@ -180,50 +186,68 @@ T.B.A.
 
 ## Troubleshooting
 
+***NOTE:***
+
+Julia [README](https://github.com/JuliaLang/julia) states:
+> “Building Julia requires 2GiB of disk space and approximately 4GiB of virtual memory.”
+
 ### "mkdir: /Volumes/Macintosh: Not a directory"
 
-This can occur if you have [more than one disk drive](https://github.com/sstephenson/ruby-build/issues/748#issuecomment-95143238) 
+This can occur if you have [more than one disk drive](https://github.com/sstephenson/ruby-build/issues/748#issuecomment-95143238)
 and your home directory is physically mounted on a volume that might have a
 space in its name, such as "Macintosh HD":
 
-```
+```sh
 $ df
 /dev/disk2    ...  /
 /dev/disk1s2  ...  /Volumes/Macintosh HD
 ```
 
-The easiest solution is to avoid building a Julia version to any path that has space characters in it. So instead of building into `~/.jlenv/versions/<version>`, which is the default for `jlenv install <version>`, instead you could install into `/opt/julias/<version>` and symlink `/opt/julias` as `~/.jlenv/versions` so jlenv continues to work as before:
+The easiest solution is to avoid building a Julia version to any path that has
+space characters in it.
+Instead of building into `~/.jlenv/versions/<version>`, which is the default
+for `jlenv install <version>`, you could install into `/opt/julias/<version>`
+and symlink `/opt/julias` as `~/.jlenv/versions` so jlenv continues to work
+as before:
 
 ```sh
 sudo mkdir -p /opt/julias
 sudo chown "${USER}:staff" /opt/julias
-rm -rf ~/.jlenv/versions                 # This will DELETE your existing Julia versions!
+# THIS WILL DELETE YOUR EXISTING JULIA VERSIONS!
+rm -rf ~/.jlenv/versions
 ln -s /opt/julias ~/.jlenv/versions
 ```
 
 Now proceed as following:
 
-```
+```sh
 julia-build <version> /opt/julias/<version>
 ```
 
 ### No space left on device
 
-Some distributions will mount a tmpfs partition with low disk space to `/tmp`, such as 250 MB. You can check this with:
+Some distributions will mount a tmpfs partition with low disk space to `/tmp`,
+such as 250 MB. You can check this with:
 
-    mount | grep tmp
-    df -h | grep tmp
+```sh
+mount | grep tmp
+df -h | grep tmp
+```
 
-Compiling Julia can require up to 4 or 5GiB, so you should temporarily resize `/tmp` to allow more usage:
+Compiling Julia can require up to 4 or 5GiB, so you should temporarily
+resize `/tmp` to allow more usage:
 
-    rm -rf /tmp/julia-build*
-    mount -o remount,size=5G,noatime /tmp
+```sh
+rm -rf /tmp/julia-build*
+mount -o remount,size=5G,noatime /tmp
+```
 
 ### Lower the number of parallel jobs
 
-On hosts that report a large amount of CPU cores, but don't have plenty of RAM, you might get:
+On hosts that report a large amount of CPU cores, but don't have plenty of RAM,
+you might get:
 
-```
+```sh
 gcc: internal compiler error: Killed (program cc1)
 ```
 
@@ -245,27 +269,27 @@ TMPDIR=~/tmp MAKE_OPTS=-j2 jlenv install 1.0.3
 
 ```sh
 # As an jlenv plugin
-$ jlenv install --list                 # lists all available versions of Julia
-$ jlenv install v1.0.1                 # installs Julia v1.0.1 to ~/.jlenv/versions
+jlenv install --list                 # lists all available versions of Julia
+jlenv install v1.0.1                 # installs Julia v1.0.1 to ~/.jlenv/versions
 
 # As a standalone program
-$ julia-build --definitions               # lists all available versions of Julia
-$ julia-build 1.0.1 ~/local/julia-v1.0.1  # installs Julia v1.0.1 to ~/local/julia-1.0.1
+julia-build --definitions               # lists all available versions of Julia
+julia-build 1.0.1 ~/local/julia-v1.0.1  # installs Julia v1.0.1 to ~/local/julia-1.0.1
 ```
 
-julia-build does not check for system dependencies before downloading and
-attempting to compile the Julia source. Please ensure that [all required
-libraries](https://github.com/JuliaLang/julia#required-build-tools-and-external-libraries) are available on your system.
+`julia-build` does not check for system dependencies before downloading and
+attempting to compile the Julia source.
+Please ensure that [all required libraries](https://github.com/JuliaLang/julia#required-build-tools-and-external-libraries) are available on your system.
 
 ### Advanced Usage
 
 #### Custom Build Definitions
 
 If you wish to develop and install a version of Julia that is not yet supported
-by julia-build, you may specify the path to a custom “build definition file” in
-place of a Julia version number.
+by `julia-build`, you may specify the path to a custom “build definition file”
+in place of a Julia version number.
 
-Use the [default build definitions][definitions] as a template for your custom
+Use the [default build definitions][jldefs] as a template for your custom
 definitions.
 
 #### Custom Build Configuration
@@ -274,7 +298,7 @@ The build process may be configured through the following environment variables:
 
 | Variable                 | Function                                                                                         |
 | ------------------------ | ------------------------------------------------------------------------------------------------ |
-| `TMPDIR`                 | Where temporary files are stored.                                                                |
+| `TMPDIR`                  | Where temporary files are stored.                                                                |
 | `JULIA_BUILD_BUILD_PATH`  | Where sources are downloaded and built. (Default: a timestamped subdirectory of `TMPDIR`)        |
 | `JULIA_BUILD_CACHE_PATH`  | Where to cache downloaded package files. (Default: `~/.jlenv/cache` if invoked as jlenv plugin)  |
 | `JULIA_BUILD_MIRROR_URL`  | Custom mirror URL root.                                                                          |
@@ -299,13 +323,13 @@ read from `STDIN`:
 
 ```sh
 # applying a single patch
-$ jlenv install --patch 1.0.3-p4 < /path/to/julia.patch
+jlenv install --patch 1.0.3-p4 < /path/to/julia.patch
 
 # applying a patch from HTTP
-$ jlenv install --patch 1.0.3-p4 < <(curl -sSL http://git.io/julia.patch)
+jlenv install --patch 1.0.3-p4 < <(curl -sSL http://git.io/julia.patch)
 
 # applying multiple patches
-$ cat fix1.patch fix2.patch | jlenv install --patch 1.0.3-p4
+cat fix1.patch fix2.patch | jlenv install --patch 1.0.3-p4
 ```
 
 #### Checksum Verification
@@ -333,7 +357,7 @@ variable when using `--keep` with `julia-build`.
 Build definitions are simple shell scripts that get sourced in the `julia-build`
 environment so they can invoke functions that fetch necessary packages and
 compile them into the destination directory.  The complete list of
-[Julia definitions](https://github.com/jlenv/julia-build/tree/master/share/julia-build)
+[Julia definitions][jldefs]
 is here.
 
 The basic invocation from a build definition is the function to download and
@@ -369,21 +393,21 @@ install_svn PACKAGE_NAME SVN_URL REVISION [...]
 
 ### Build steps
 
-#### Pre-build steps:
+#### Pre-build steps
 
 * **ldflags_dirs**: Ensures that directories listed in `LDFLAGS` exist.
 * **auto_tcltk**: Detects XQuartz on OS X or disables TK.
 * **autoconf**: Runs `autoconf`. Prerequisite for "standard" step when fetching
   Julia versions from git/SVN.
 
-#### Build steps:
+#### Build steps
 
 * **standard**: `./configure` + `make`. This is the default.
 * **topaz**: copies over pre-built Topaz.
 * **julia**: `julia setup.jl`. Used when installing Julia Packages.
 * **mac_openssl**: builds OpenSSL on OS X.
 
-#### Post-build steps:
+#### Post-build steps
 
 * **verify_openssl**: Checks that openssl extension can be loaded.
 
@@ -418,3 +442,5 @@ before_install_package() {
 
 install_package ...
 ```
+
+[jldefs]: https://github.com/jlenv/julia-build/tree/master/share/julia-build
