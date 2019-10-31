@@ -16,7 +16,7 @@
 #  - hostnamectl (Disambiguates Centos, Ubuntu etc.)
 #  - alternatives (Redhat family) update-alternatives (Debian family)
 
-JULIA_BUILD_VERSION="20190821"
+JULIA_BUILD_VERSION="1.0.0"
 
 OLDIFS="$IFS"
 
@@ -830,7 +830,7 @@ require_llvm() {
           local homebrew_package="llvm@$llvm_version"
           { echo
             colorize 1 "ERROR"
-            echo ": Rubinius will not be able to compile using Apple's LLVM-based "
+            echo ": Julia will not be able to compile using Apple's LLVM-based "
             echo "build tools on OS X. You will need to install LLVM $llvm_version first."
             echo
             colorize 1 "TO FIX THE PROBLEM"

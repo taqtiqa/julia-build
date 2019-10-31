@@ -2,6 +2,5 @@
 set -e
 
 STATUS=0
-bats ${CI:+--tap} test || STATUS="$?"
-
+bats ${CI:+--tap} test | tee bats.log || STATUS="$?"
 exit "$STATUS"
