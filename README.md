@@ -1,6 +1,6 @@
 # julia-build
 
-[![Build Status](https://travis-ci.com/jlenv/julia-build.svg?branch=master)](https://travis-ci.com/jlenv/julia-build)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d33f741a507b4cee99ab9d4931ae1163)](https://www.codacy.com/manual/taqtiqa-mark/jlenv-julia-build?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jlenv/julia-build&amp;utm_campaign=Badge_Grade)[![CodeFactor](https://www.codefactor.io/repository/github/jlenv/julia-build/badge)](https://www.codefactor.io/repository/github/jlenv/julia-build)
+[![Build Status](https://travis-ci.com/jlenv/julia-build.svg?branch=master)](https://travis-ci.com/jlenv/julia-build)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d33f741a507b4cee99ab9d4931ae1163)](https://www.codacy.com/manual/taqtiqa-mark/jlenv-julia-build?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jlenv/julia-build&amp;utm_campaign=Badge_Grade)[![CodeFactor](https://www.codefactor.io/repository/github/jlenv/julia-build/badge)](https://www.codefactor.io/repository/github/jlenv/julia-build) [![Coverage Status](https://coveralls.io/repos/github/jlenv/jlenv/badge.svg?branch=master)](https://coveralls.io/github/jlenv/jlenv?branch=master) [![codecov](https://codecov.io/gh/jlenv/julia-build/branch/master/graph/badge.svg)](https://codecov.io/gh/jlenv/julia-build)
 
 `julia-build` is a command-line utility tool that makes it easy to compile,
 install and remove virtually any version of [Julia](https://www.julialang.org),
