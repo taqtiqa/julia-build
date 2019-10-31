@@ -5,7 +5,7 @@ before_install: "gem update --system --no-doc"
 before_script:
   - "whereis bash"
   - "bash --version"
-  - ./test/install_bash.bash
+  - ./script/install_bash.bash
   - "bash --version"
   - "git clone https://github.com/infertux/bashcov.git"
   - "cd bashcov/"
